@@ -5,10 +5,12 @@ public class Posicion {
     private Posicion casillaPrevia;
     private Posicion casillaSiguiente;
 
-    public Posicion(String tipoTuberia, Posicion casillaPrevia, Posicion casillaSiguiente) {
+    private int posicionVerdadera;
+    public Posicion(String tipoTuberia, Posicion casillaPrevia, Posicion casillaSiguiente,int posicionVerdadera) {
         this.tipoTuberia = tipoTuberia;
         this.casillaPrevia = casillaPrevia;
         this.casillaSiguiente = casillaSiguiente;
+        this.posicionVerdadera = posicionVerdadera;
     }
 
     public String getTipoTuberia() {

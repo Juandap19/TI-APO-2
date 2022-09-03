@@ -72,7 +72,7 @@ public class Main {
         lc.nextLine();
         System.out.println("Escriba el tipo de tubería =, ||, o.");
         String tipoTuberia = lc.nextLine();
-        ct.ponerTuberia();
+        ct.ponerTuberia(fila,columna,tipoTuberia);
     }
     public static void verPuntaje(){
 

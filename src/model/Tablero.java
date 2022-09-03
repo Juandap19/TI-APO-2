@@ -22,12 +22,25 @@ public class Tablero {
         int numberD = numAleatorio.nextInt(50-38+1) + 38;
         for (int i = 0; i < 64; i++) {
             if(numberF == i){
-                generarPosiciones("F");
+                generarPosiciones("F",i);
             }else if(numberD == i){
-                generarPosiciones("D");
+                generarPosiciones("D",i);
             }else{
-                generarPosiciones("x");
+                generarPosiciones("x",i);
             }
+        }
+    }
+    public void generarPosiciones(String tuberiaType,int posicionVerdadera){
+        Posicion nuevaPosicion = new Posicion(tuberiaType,null,null,posicionVerdadera);
+        if(inicio ==null){
+            inicio = nuevaPosicion;
+            final1 = nuevaPosicion;
+        }else{
+            final1.setCasillaSiguiente(nuevaPosicion);
+            nuevaPosicion.setCasillaPrevia(final1);
+            final1=final1.getCasillaSiguiente();
+            nuevaPosicion.setCasillaSiguiente(inicio);
+
         }
     }
 
@@ -54,19 +67,7 @@ public class Tablero {
         return message;
     }
 
-    public void generarPosiciones(String tuberiaType){
-        Posicion nuevaPosicion = new Posicion(tuberiaType,null,null);
-        if(inicio ==null){
-            inicio = nuevaPosicion;
-            final1 = nuevaPosicion;
-        }else{
-            final1.setCasillaSiguiente(nuevaPosicion);
-            nuevaPosicion.setCasillaPrevia(final1);
-            final1=final1.getCasillaSiguiente();
-            nuevaPosicion.setCasillaSiguiente(inicio);
 
-        }
-    }
     public Posicion getInicio() {
         return inicio;
     }
