@@ -15,23 +15,29 @@ public class Tablero {
     public void generarNuevaPartida(String name){
         Jugador nuevoJugador = new Jugador(0,name);
         jugadorActual = nuevoJugador;
-        /*primer if() se busca un numero random entre 5 20 el segundo if 21 y 50 y demas
-        * se usa el ultimo else*/
         Random numAleatorio = new Random();
         int numberF = numAleatorio.nextInt(15-5+1) + 5;
         int numberD = numAleatorio.nextInt(50-38+1) + 38;
+        int posicionFila = 0;
+        int posicionColumna = 0;
         for (int i = 0; i < 64; i++) {
             if(numberF == i){
-                generarPosiciones("F",i);
+                generarPosiciones("F",posicionColumna,posicionFila);
             }else if(numberD == i){
-                generarPosiciones("D",i);
+                generarPosiciones("D",posicionColumna,posicionFila);
             }else{
-                generarPosiciones("x",i);
+                generarPosiciones("x",posicionColumna,posicionFila);
+            }
+            if((posicionColumna%7)==0&&posicionColumna != 0){
+                posicionColumna = 0;
+                posicionFila++;
+            }else {
+                posicionColumna++;
             }
         }
     }
-    public void generarPosiciones(String tuberiaType,int posicionVerdadera){
-        Posicion nuevaPosicion = new Posicion(tuberiaType,null,null,posicionVerdadera);
+    public void generarPosiciones(String tuberiaType,int posicionColumna,int posicionFila){
+        Posicion nuevaPosicion = new Posicion(tuberiaType,null,null,posicionColumna,posicionFila);
         if(inicio ==null){
             inicio = nuevaPosicion;
             final1 = nuevaPosicion;
@@ -41,6 +47,23 @@ public class Tablero {
             final1=final1.getCasillaSiguiente();
             nuevaPosicion.setCasillaSiguiente(inicio);
 
+        }
+    }
+
+    public void ponerTuberia(int columna , int fila, String tipoTuberia){
+        Posicion pointer = inicio;
+        boolean continue1 = true;
+        while(continue1 != false){
+            if(pointer.getPosicionColumna() == columna && pointer.getPosicionFila() == fila){
+                continue1 = false;
+            }else{
+                pointer = pointer.getCasillaSiguiente();
+            }
+        }
+        if(pointer.getTipoTuberia().equals("F")||pointer.getTipoTuberia().equals("D")){
+
+        }else{
+            pointer.setTipoTuberia(tipoTuberia);
         }
     }
 

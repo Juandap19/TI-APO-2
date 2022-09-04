@@ -12,7 +12,10 @@ public class Controladora {
         return  message;
     }
 
-    public void ponerTuberia(int fila,int columna,String tipoTuberia){
+    public String ponerTuberia(int columna,int fila,String tipoTuberia){
+    tablero.ponerTuberia(columna, fila, tipoTuberia);
+    String mensaje = tablero.showAll();
+    return  mensaje;
 
 
     }

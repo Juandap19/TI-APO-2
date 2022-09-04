@@ -67,12 +67,12 @@ public class Main {
         System.out.println("Digite la fila:");
         int fila = lc.nextInt();
         lc.nextLine();
-        System.out.printf("Digite la columna");
+        System.out.println("Digite la columna");
         int columna = lc.nextInt();
         lc.nextLine();
         System.out.println("Escriba el tipo de tubería =, ||, o.");
         String tipoTuberia = lc.nextLine();
-        ct.ponerTuberia(fila,columna,tipoTuberia);
+        System.out.println(ct.ponerTuberia(columna,fila,tipoTuberia));
     }
     public static void verPuntaje(){
 
