@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31bf0d35-5a56-4537-82f4-85ac261ba56b" name="Changes" comment="&quot;Primera version&quot;">
+    <list default="true" id="31bf0d35-5a56-4537-82f4-85ac261ba56b" name="Changes" comment="&quot;Segunda version&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Controladora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Controladora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Posicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Posicion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Jugador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Tablero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Main.java" afterDir="false" />
     </list>
@@ -34,12 +34,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,7 +63,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662246411580</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="&quot;Segunda version&quot;">
+      <created>1662251264043</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662251264043</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -79,6 +86,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;Primera version&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Primera version&quot;" />
+    <MESSAGE value="&quot;Segunda version&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Segunda version&quot;" />
   </component>
 </project>

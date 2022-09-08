@@ -1,7 +1,11 @@
 package ui;
 
 import model.*;
+
+import javax.xml.namespace.QName;
+import java.time.LocalTime;
 import java.util.Scanner;
+
 
 public class Main {
     public static Scanner lc = new Scanner(System.in);
@@ -25,13 +29,18 @@ public class Main {
     }
     public static int menu(){
         System.out.println("""
+                /////////////////////////
                 [1]Nueva Partida
                 [2]Ver Puntaje
                 [3]Salir
+                /////////////////////////
                 """);
         int option = lc.nextInt();
         lc.nextLine();
         return option;
+    }
+    public static void verPuntaje(){
+        System.out.println(ct.verPuntajes());
     }
 
     public static void nuevaPartida(){
@@ -39,6 +48,10 @@ public class Main {
         System.out.println("Digite su nickName");
         String nombre = lc.nextLine();
         System.out.println(ct.nuevaPartida(nombre));
+        int puntosObtenidos = 0;
+        LocalTime tiempoInicio = LocalTime.now();
+        int minInicio = tiempoInicio.getMinute();
+        int segInicio = tiempoInicio.getSecond();
         do{
             option = partidaMenu();
             switch (option){
@@ -46,8 +59,18 @@ public class Main {
                     ponerTuberia();
                     break;
                 case 2:
+                    LocalTime tiempoFinal = LocalTime.now();
+                    int minFinal = tiempoFinal.getMinute();
+                    int segFinal = tiempoFinal.getSecond();
+                    int tiempoObtenido = ((minFinal-minInicio) * 60 ) + (segFinal - segInicio);
+                    puntosObtenidos = ct.calcularPuntos(tiempoObtenido);
+                    option = simularTuberia();
+                    if(option == 3){
+                        ct.addJugador(nombre,puntosObtenidos);
+                    }
                     break;
-
+                case 3:
+                    break;
             }
 
         }while(option != 3);
@@ -74,7 +97,14 @@ public class Main {
         String tipoTuberia = lc.nextLine();
         System.out.println(ct.ponerTuberia(columna,fila,tipoTuberia));
     }
-    public static void verPuntaje(){
 
+    public static int  simularTuberia(){
+        int option = 0;
+        String mensaje = ct.simularTuberia();
+        System.out.println(mensaje);
+        if(mensaje.equalsIgnoreCase("La solución es correcta")){
+            option = 3;
+        }
+        return  option;
     }
 }
