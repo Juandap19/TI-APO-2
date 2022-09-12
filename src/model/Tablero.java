@@ -68,6 +68,7 @@ public class Tablero {
         }else{
             final1.setCasillaSiguiente(nuevaPosicion);
             nuevaPosicion.setCasillaPrevia(final1);
+            final1 = final1.getCasillaSiguiente();
 
         }
     }
@@ -96,7 +97,8 @@ public class Tablero {
     }
 
     public String simularTuberia(){
-        boolean posibleSolucion = simularTuberia(true,inicio);
+//        boolean posibleSolucion = simularTuberia(true,inicio);
+        boolean posibleSolucion = simularTuberiaIterativo(true,inicio);
         System.out.println("salioo");
         if(posibleSolucion==true){
             System.out.println("dfd");
@@ -106,11 +108,10 @@ public class Tablero {
             return "La tubería no funciona";
         }
     }
-    private boolean simularTuberia(boolean posibleSolucion,Posicion pointer ){
-        System.out.println("i");
+    /*private boolean simularTuberia(boolean posibleSolucion,Posicion pointer ){
+        System.out.println(posibleSolucion);
         if(pointer != null) {
             if (pointer.getTipoTuberia().equals("D") && restantes(pointer) == 0) {
-                System.out.println("pee");
                 return posibleSolucion;
             } else if (pointer.getTipoTuberia().equals("o") && pointer.getCasillaSiguiente().getTipoTuberia().equals("o")) {
                 return false;
@@ -126,16 +127,39 @@ public class Tablero {
                 return false;
             } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("x")) {
                 return false;
-
             } else {
-                System.out.println("me dices");
                 posibleSolucion = simularTuberia(posibleSolucion, pointer.getCasillaSiguiente());
-                System.out.println("solo dilo");
                 return true;
             }
         }else{
             return posibleSolucion;
         }
+    }*/
+
+    private boolean simularTuberiaIterativo(boolean posibleSolucion,Posicion pointer ){
+        int counter = 0;
+        System.out.println(restantes(pointer));
+        while(pointer != null && counter != 64 && posibleSolucion != false && restantes(pointer)!=0){
+            counter++;
+             if (pointer.getTipoTuberia().equals("o") && pointer.getCasillaSiguiente().getTipoTuberia().equals("o")) {
+                posibleSolucion = false;
+            } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("||")) {
+                 posibleSolucion = false;
+            } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("x")) {
+                 posibleSolucion = false;
+            } else if (pointer.getTipoTuberia().equals("||") && pointer.getCasillaSiguiente().getTipoTuberia().equals("=")) {
+                 posibleSolucion = false;
+            } else if (pointer.getTipoTuberia().equals("o") && casillaInferior(pointer).equals("=")) {
+                 posibleSolucion = false;
+            } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("=")) {
+                 posibleSolucion = false;
+            } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("x")) {
+                 posibleSolucion = false;
+            }else{
+                 pointer = pointer.getCasillaSiguiente();
+             }
+        }
+        return posibleSolucion;
     }
 
     public String casillaInferior(Posicion pointer){
@@ -148,15 +172,33 @@ public class Tablero {
 
     public int restantes(Posicion pointer){
         int restantes = 0;
-        while(pointer!= null){
-            System.out.println("uwun");
-            if(pointer.getTipoTuberia().equals("x")){
-                pointer= pointer.getCasillaSiguiente();
+        boolean continue1 = true;
+        Posicion posicionD = null;
+        while(continue1 != false && pointer != null){
+            if(pointer.getTipoTuberia().equals("D")){
+                continue1 = false;
+                posicionD = pointer;
+
             }else{
-                restantes++;
+                pointer = pointer.getCasillaSiguiente();
             }
         }
-        return restantes;
+        if(pointer != null){
+            pointer = inicio;
+            int posicionVerdaderaD = posicionD.getPosicionColumna() * posicionD.getPosicionFila();
+
+            while(pointer!= null&& posicionVerdaderaD != 64){
+                posicionVerdaderaD++;
+                if(pointer.getTipoTuberia().equals("x")){
+                    pointer= pointer.getCasillaSiguiente();
+                }else{
+                    restantes++;
+                }
+            }
+            return restantes;
+        }
+        return  0;
+
     }
 
     public int calcularTuberias(){

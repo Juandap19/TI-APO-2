@@ -78,8 +78,8 @@ public class Controladora {
         if(pointer==null){
 
         }else{
-            listaJugadores.add(pointer);
             verPuntajes(pointer.getRight());
+            listaJugadores.add(pointer);
             verPuntajes(pointer.getLeft());
         }
     }

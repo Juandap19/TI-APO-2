@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31bf0d35-5a56-4537-82f4-85ac261ba56b" name="Changes" comment="&quot;Segunda version&quot;">
+    <list default="true" id="31bf0d35-5a56-4537-82f4-85ac261ba56b" name="Changes" comment="&quot;Tercera Version- Falta metodo Simular&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Controladora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Controladora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Jugador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Tablero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +35,8 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/juand/OneDrive/Escritorio/Tercer Semestre - Juan david Patiño/Apo/Tareas Integradoras/Tarea Integradora&quot;
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -70,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662251264043</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="&quot;Tercera Version- Falta metodo Simular&quot;">
+      <created>1662639559256</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662639559256</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -87,6 +93,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;Primera version&quot;" />
     <MESSAGE value="&quot;Segunda version&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Segunda version&quot;" />
+    <MESSAGE value="&quot;Tercera Version- Falta metodo Simular&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Tercera Version- Falta metodo Simular&quot;" />
   </component>
 </project>
