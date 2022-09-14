@@ -1,7 +1,9 @@
 package ui;
 
 import model.*;
+import exceptions.*;
 
+import java.util.InputMismatchException;
 import javax.xml.namespace.QName;
 import java.time.LocalTime;
 import java.util.Scanner;
@@ -87,15 +89,28 @@ public class Main {
         return option;
     }
     public static void ponerTuberia(){
-        System.out.println("Digite la fila:");
-        int fila = lc.nextInt();
-        lc.nextLine();
-        System.out.println("Digite la columna");
-        int columna = lc.nextInt();
-        lc.nextLine();
-        System.out.println("Escriba el tipo de tubería =, ||, o.");
-        String tipoTuberia = lc.nextLine();
-        System.out.println(ct.ponerTuberia(columna,fila,tipoTuberia));
+        try{
+            System.out.println("Digite la fila:");
+            int fila = Integer.parseInt(lc.next());
+            lc.nextLine();
+            System.out.println("Digite la columna:");
+            int columna = Integer.parseInt(lc.next());
+            lc.nextLine();
+            System.out.println("Escriba el tipo de tubería =, ||, o.");
+            String tipoTuberia = lc.nextLine();
+            System.out.println(ct.ponerTuberia(columna,fila,tipoTuberia));
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Solo numeros entre 0 - 7");
+            ponerTuberia();
+        }catch (NullPointerException exception){
+            System.out.println("El valor sale del rango entre 0-7");
+            ponerTuberia();
+        }
+//        catch(SobrePasaLimites exception){
+
+//        }
+
     }
 
     public static int  simularTuberia(){
