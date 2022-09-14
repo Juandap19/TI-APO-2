@@ -68,10 +68,14 @@ public class Controladora {
         listaJugadores = new ArrayList<Jugador>();
         String mensaje = "";
         verPuntajes(this.inicioPuntajes);
-        System.out.println(listaJugadores.size());
-        for (int i = 0; i < listaJugadores.size(); i++) {
-            mensaje = mensaje + "\n"+"["+ (i+1) +"]"+ listaJugadores.get(i).getNombre()+": "+listaJugadores.get(i).getPuntaje()+" Puntajes";
+        if(listaJugadores.size() == 0){
+            mensaje = "No hay jugadores Registrados";
+        }else{
+            for (int i = 0; i < listaJugadores.size(); i++) {
+                mensaje = mensaje + "\n"+"["+ (i+1) +"]"+ listaJugadores.get(i).getNombre()+": "+listaJugadores.get(i).getPuntaje()+" Puntajes";
+            }
         }
+
         return mensaje;
     }
     private void verPuntajes(Jugador pointer){

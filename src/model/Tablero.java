@@ -139,35 +139,68 @@ public class Tablero {
     private boolean simularTuberiaIterativo(boolean posibleSolucion,Posicion pointer ){
         int counter = 0;
         System.out.println(restantes(pointer));
-        while(pointer != null && counter != 64 && posibleSolucion != false && restantes(pointer)!=0){
+        while(pointer != null && counter != 64 && posibleSolucion != false && restantes(pointer)!=0) {
             counter++;
-             if (pointer.getTipoTuberia().equals("o") && pointer.getCasillaSiguiente().getTipoTuberia().equals("o")) {
+            if (pointer.getTipoTuberia().equals("o") && pointer.getCasillaSiguiente().getTipoTuberia().equals("o")) {
                 posibleSolucion = false;
             } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("||")) {
+                posibleSolucion = false;
+            } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("x")){
+                posibleSolucion = false;
+            }else if (pointer.getTipoTuberia().equals("||") && pointer.getCasillaSiguiente().getTipoTuberia().equals("=")) {
+                posibleSolucion = false;
+            }else if (pointer.getTipoTuberia().equals("o") && casillaInferior(pointer).equals("=")) {
+                posibleSolucion = false;
+            }else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("=")) {
+                posibleSolucion = false;
+            }else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("x")){
                  posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("x")) {
+            } else if (pointer.getTipoTuberia().equals("F") && pointer.getCasillaSiguiente().equals("o")) {
                  posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("||") && pointer.getCasillaSiguiente().getTipoTuberia().equals("=")) {
+            }else if (pointer.getTipoTuberia().equals("F") && pointer.getCasillaPrevia().equals("o")) {
                  posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("o") && casillaInferior(pointer).equals("=")) {
+            }else if (pointer.getTipoTuberia().equals("F") && casillaInferior(pointer).equals("o")) {
                  posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("=")) {
+            }else if(pointer.getTipoTuberia().equals("F") && casillaSuperior(pointer).equals("o")){
                  posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("x")) {
+            }else if (pointer.getTipoTuberia().equals("D") && pointer.getCasillaPrevia().equals("o")) {
                  posibleSolucion = false;
+            } else if (pointer.getTipoTuberia().equals("D") && casillaInferior(pointer).equals("o")) {
+                 posibleSolucion = false;
+            }else if(pointer.getTipoTuberia().equals("D") && casillaSuperior(pointer).equals("o")) {
+                posibleSolucion = false;
+            }else if(pointer.getTipoTuberia().equals("D") && pointer.getCasillaSiguiente().equals("o")) {
+
+
             }else{
-                 pointer = pointer.getCasillaSiguiente();
-             }
+                pointer = pointer.getCasillaSiguiente();
+            }
         }
         return posibleSolucion;
     }
+
+
 
     public String casillaInferior(Posicion pointer){
         int pointerFilainferior = pointer.getPosicionFila();
         pointerFilainferior++;
         int pointerColumnainferior = pointer.getPosicionColumna();
         Posicion casillaInferior = buscarPosicion(inicio,pointerColumnainferior,pointerFilainferior);
+        System.out.println(casillaInferior.getTipoTuberia()+" Casilla inferior");
         return casillaInferior.getTipoTuberia();
+    }
+
+    public String casillaSuperior(Posicion pointer){
+        int pointerFilaSuperior = pointer.getPosicionFila();
+        pointerFilaSuperior--;
+        int pointerColumnainferior = pointer.getPosicionColumna();
+        if(pointerFilaSuperior < 0){
+            return "Casilla Superior Alcanzada";
+        }else{
+            Posicion casillaInferior = buscarPosicion(inicio,pointerColumnainferior,pointerFilaSuperior);
+            System.out.println(casillaInferior.getTipoTuberia()+" Casilla superior");
+            return casillaInferior.getTipoTuberia();
+        }
     }
 
     public int restantes(Posicion pointer){
