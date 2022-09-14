@@ -4,7 +4,6 @@ public class Posicion {
     private String tipoTuberia;
     private Posicion casillaPrevia;
     private Posicion casillaSiguiente;
-
     private int posicionFila;
     private int posicionColumna;
     public Posicion(String tipoTuberia, Posicion casillaPrevia, Posicion casillaSiguiente,int posicionColumna,int posicionFila) {

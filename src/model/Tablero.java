@@ -72,7 +72,6 @@ public class Tablero {
 
         }
     }
-
     public void ponerTuberia(int columna , int fila, String tipoTuberia){
         Posicion pointer = buscarPosicion(inicio,columna,fila);
 
@@ -82,7 +81,6 @@ public class Tablero {
             pointer.setTipoTuberia(tipoTuberia);
         }
     }
-
     public Posicion buscarPosicion(Posicion pointer,int columna, int fila){
         boolean continue1 = true;
         while(continue1 != false){
@@ -95,9 +93,7 @@ public class Tablero {
 
         return pointer;
     }
-
     public String simularTuberia(){
-//        boolean posibleSolucion = simularTuberia(true,inicio);
         boolean posibleSolucion = simularTuberiaIterativo(true,inicio);
         System.out.println("salioo");
         if(posibleSolucion==true){
@@ -108,34 +104,6 @@ public class Tablero {
             return "La tubería no funciona";
         }
     }
-    /*private boolean simularTuberia(boolean posibleSolucion,Posicion pointer ){
-        System.out.println(posibleSolucion);
-        if(pointer != null) {
-            if (pointer.getTipoTuberia().equals("D") && restantes(pointer) == 0) {
-                return posibleSolucion;
-            } else if (pointer.getTipoTuberia().equals("o") && pointer.getCasillaSiguiente().getTipoTuberia().equals("o")) {
-                return false;
-            } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("||")) {
-                return false;
-            } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("x")) {
-                return false;
-            } else if (pointer.getTipoTuberia().equals("||") && pointer.getCasillaSiguiente().getTipoTuberia().equals("=")) {
-                return false;
-            } else if (pointer.getTipoTuberia().equals("o") && casillaInferior(pointer).equals("=")) {
-                return false;
-            } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("=")) {
-                return false;
-            } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("x")) {
-                return false;
-            } else {
-                posibleSolucion = simularTuberia(posibleSolucion, pointer.getCasillaSiguiente());
-                return true;
-            }
-        }else{
-            return posibleSolucion;
-        }
-    }*/
-
     private boolean simularTuberiaIterativo(boolean posibleSolucion,Posicion pointer ){
         int counter = 0;
         System.out.println(restantes(pointer));
@@ -178,9 +146,6 @@ public class Tablero {
         }
         return posibleSolucion;
     }
-
-
-
     public String casillaInferior(Posicion pointer){
         int pointerFilainferior = pointer.getPosicionFila();
         pointerFilainferior++;
@@ -189,7 +154,6 @@ public class Tablero {
         System.out.println(casillaInferior.getTipoTuberia()+" Casilla inferior");
         return casillaInferior.getTipoTuberia();
     }
-
     public String casillaSuperior(Posicion pointer){
         int pointerFilaSuperior = pointer.getPosicionFila();
         pointerFilaSuperior--;
@@ -202,7 +166,6 @@ public class Tablero {
             return casillaInferior.getTipoTuberia();
         }
     }
-
     public int restantes(Posicion pointer){
         int restantes = 0;
         boolean continue1 = true;
@@ -233,7 +196,6 @@ public class Tablero {
         return  0;
 
     }
-
     public int calcularTuberias(){
         int tuberiasUsadas = 0;
         Posicion pointer = inicio;
@@ -247,27 +209,21 @@ public class Tablero {
     }
 
 //    Getter and Setters.
-
     public Posicion getInicio() {
         return inicio;
     }
-
     public void setInicio(Posicion inicio) {
         this.inicio = inicio;
     }
-
     public Posicion getFinal1() {
         return final1;
     }
-
     public void setFinal1(Posicion final1) {
         this.final1 = final1;
     }
-
     public Jugador getJugadorActual() {
         return jugadorActual;
     }
-
     public void setJugadorActual(Jugador jugadorActual) {
         this.jugadorActual = jugadorActual;
     }

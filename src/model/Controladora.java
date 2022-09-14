@@ -89,8 +89,6 @@ public class Controladora {
     }
 
 //    Getters and Setters
-
-
     public Tablero getTablero() {
         return tablero;
     }

@@ -4,7 +4,6 @@ import model.*;
 import exceptions.*;
 
 import java.util.InputMismatchException;
-import javax.xml.namespace.QName;
 import java.time.LocalTime;
 import java.util.Scanner;
 
@@ -44,7 +43,6 @@ public class Main {
     public static void verPuntaje(){
         System.out.println(ct.verPuntajes());
     }
-
     public static void nuevaPartida(){
         int option = 0;
         System.out.println("Digite su nickName");
@@ -77,7 +75,6 @@ public class Main {
 
         }while(option != 3);
     }
-
     public static int partidaMenu(){
         int option = 0;
         System.out.println("""
@@ -103,16 +100,12 @@ public class Main {
         catch (NumberFormatException e) {
             System.out.println("Solo numeros entre 0 - 7");
             ponerTuberia();
-        }catch (NullPointerException exception){
+        }catch (NullPointerException exception) {
             System.out.println("El valor sale del rango entre 0-7");
             ponerTuberia();
         }
-//        catch(SobrePasaLimites exception){
-
-//        }
 
     }
-
     public static int  simularTuberia(){
         int option = 0;
         String mensaje = ct.simularTuberia();
