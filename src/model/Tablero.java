@@ -94,64 +94,77 @@ public class Tablero {
         return pointer;
     }
     public String simularTuberia(){
-        boolean posibleSolucion = simularTuberiaIterativo(true,inicio);
-        System.out.println("salioo");
+        boolean posibleSolucion = simularTuberia(true,inicio);
+        if(inicioValidacion(inicio) == false){
+            posibleSolucion = false;
+        }
         if(posibleSolucion==true){
-            System.out.println("dfd");
             return "La solución es correcta";
         }else{
-            System.out.println("pppppd");
             return "La tubería no funciona";
         }
     }
-    private boolean simularTuberiaIterativo(boolean posibleSolucion,Posicion pointer ){
-        int counter = 0;
-        System.out.println(restantes(pointer));
-        while(pointer != null && counter != 64 && posibleSolucion != false && restantes(pointer)!=0) {
-            counter++;
-            if (pointer.getTipoTuberia().equals("o") && pointer.getCasillaSiguiente().getTipoTuberia().equals("o")) {
+
+    private boolean simularTuberia(boolean posibleSolucion,Posicion pointer ) {
+            if(pointer == null){
+
+            } else if (pointer.getTipoTuberia().equals("o") && pointer.getCasillaSiguiente().getTipoTuberia().equals("o")) {
                 posibleSolucion = false;
             } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("||")) {
                 posibleSolucion = false;
             } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("x")){
                 posibleSolucion = false;
-            }else if (pointer.getTipoTuberia().equals("||") && pointer.getCasillaSiguiente().getTipoTuberia().equals("=")) {
+            } else if (pointer.getTipoTuberia().equals("||") && pointer.getCasillaSiguiente().getTipoTuberia().equals("=")) {
                 posibleSolucion = false;
-            }else if (pointer.getTipoTuberia().equals("o") && casillaInferior(pointer).equals("=")) {
+            } else if (pointer.getTipoTuberia().equals("o") && casillaInferior(pointer).equals("=")) {
                 posibleSolucion = false;
-            }else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("=")) {
+            } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("=")) {
                 posibleSolucion = false;
-            }else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("x")){
+            } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("x")){
                  posibleSolucion = false;
             } else if (pointer.getTipoTuberia().equals("F") && pointer.getCasillaSiguiente().equals("o")) {
                  posibleSolucion = false;
-            }else if (pointer.getTipoTuberia().equals("F") && pointer.getCasillaPrevia().equals("o")) {
+            } else if (pointer.getTipoTuberia().equals("F") && pointer.getCasillaPrevia().equals("o")) {
                  posibleSolucion = false;
-            }else if (pointer.getTipoTuberia().equals("F") && casillaInferior(pointer).equals("o")) {
+            } else if (pointer.getTipoTuberia().equals("F") && casillaInferior(pointer).equals("o")) {
                  posibleSolucion = false;
-            }else if(pointer.getTipoTuberia().equals("F") && casillaSuperior(pointer).equals("o")){
+            } else if(pointer.getTipoTuberia().equals("F") && casillaSuperior(pointer).equals("o")){
                  posibleSolucion = false;
-            }else if (pointer.getTipoTuberia().equals("D") && pointer.getCasillaPrevia().equals("o")) {
+            } else if (pointer.getTipoTuberia().equals("D") && pointer.getCasillaPrevia().equals("o")) {
                  posibleSolucion = false;
             } else if (pointer.getTipoTuberia().equals("D") && casillaInferior(pointer).equals("o")) {
                  posibleSolucion = false;
-            }else if(pointer.getTipoTuberia().equals("D") && casillaSuperior(pointer).equals("o")) {
+            } else if(pointer.getTipoTuberia().equals("D") && casillaSuperior(pointer).equals("o")) {
                 posibleSolucion = false;
-            }else if(pointer.getTipoTuberia().equals("D") && pointer.getCasillaSiguiente().equals("o")) {
-
-
-            }else{
-                pointer = pointer.getCasillaSiguiente();
+            } else if(pointer.getTipoTuberia().equals("D") && pointer.getCasillaSiguiente().equals("o")) {
+                posibleSolucion = false;
+            } else{
+                posibleSolucion = simularTuberia(posibleSolucion,pointer.getCasillaSiguiente());
             }
-        }
+
         return posibleSolucion;
+    }
+    public static boolean inicioValidacion(Posicion pointer){
+        boolean hanJugado= true;
+        int counter = 0 ;
+        int counterX = 0;
+        while(counter !=63){
+            if(pointer.getTipoTuberia().equals("x")){
+                counterX++;
+            }
+            pointer = pointer.getCasillaSiguiente();
+            counter++;
+        }
+        if(counterX == 61){
+            hanJugado = false;
+        }
+        return hanJugado;
     }
     public String casillaInferior(Posicion pointer){
         int pointerFilainferior = pointer.getPosicionFila();
         pointerFilainferior++;
         int pointerColumnainferior = pointer.getPosicionColumna();
         Posicion casillaInferior = buscarPosicion(inicio,pointerColumnainferior,pointerFilainferior);
-        System.out.println(casillaInferior.getTipoTuberia()+" Casilla inferior");
         return casillaInferior.getTipoTuberia();
     }
     public String casillaSuperior(Posicion pointer){
@@ -162,7 +175,6 @@ public class Tablero {
             return "Casilla Superior Alcanzada";
         }else{
             Posicion casillaInferior = buscarPosicion(inicio,pointerColumnainferior,pointerFilaSuperior);
-            System.out.println(casillaInferior.getTipoTuberia()+" Casilla superior");
             return casillaInferior.getTipoTuberia();
         }
     }

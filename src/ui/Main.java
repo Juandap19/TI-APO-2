@@ -95,6 +95,8 @@ public class Main {
             lc.nextLine();
             System.out.println("Escriba el tipo de tubería =, ||, o.");
             String tipoTuberia = lc.nextLine();
+            tipoTuberia = tipoTuberia.toLowerCase();
+            validacionTuberia(tipoTuberia);
             System.out.println(ct.ponerTuberia(columna,fila,tipoTuberia));
         }
         catch (NumberFormatException e) {
@@ -103,8 +105,18 @@ public class Main {
         }catch (NullPointerException exception) {
             System.out.println("El valor sale del rango entre 0-7");
             ponerTuberia();
+        }catch (TuberiaValidaException exception){
+            System.out.println(exception);
+            ponerTuberia();
         }
 
+    }
+    public static void validacionTuberia(String tipoTuberia) throws TuberiaValidaException{
+        if(tipoTuberia.equals("=")||tipoTuberia.equals("||")||tipoTuberia.equals("o")){
+
+        }else{
+            throw new TuberiaValidaException("No se aceptan tuberias diferentes");
+        }
     }
     public static int  simularTuberia(){
         int option = 0;

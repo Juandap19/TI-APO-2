@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31bf0d35-5a56-4537-82f4-85ac261ba56b" name="Changes" comment="&quot;Sexta Version- Falta metodo Simular Cuando solo no hay 1 tuberia&quot;">
+    <list default="true" id="31bf0d35-5a56-4537-82f4-85ac261ba56b" name="Changes" comment="&quot;septima Version- Falta metodo Simular Cuando solo no hay 1 tuberia&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Controladora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Controladora.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/SobrePasaLimites.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/TuberiaValidaException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Posicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Posicion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Tablero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Main.java" afterDir="false" />
@@ -99,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663165568644</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="&quot;septima Version- Falta metodo Simular Cuando solo no hay 1 tuberia&quot;">
+      <created>1663197110063</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1663197110063</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,6 +127,7 @@
     <MESSAGE value="&quot;Cuarta Version- Falta metodo Simular&quot;" />
     <MESSAGE value="&quot;Quinta Version- Falta metodo Simular Cuando solo no hay 1 tuberia&quot;" />
     <MESSAGE value="&quot;Sexta Version- Falta metodo Simular Cuando solo no hay 1 tuberia&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Sexta Version- Falta metodo Simular Cuando solo no hay 1 tuberia&quot;" />
+    <MESSAGE value="&quot;septima Version- Falta metodo Simular Cuando solo no hay 1 tuberia&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;septima Version- Falta metodo Simular Cuando solo no hay 1 tuberia&quot;" />
   </component>
 </project>

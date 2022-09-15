@@ -54,4 +54,6 @@ public class Posicion {
     public void setPosicionColumna(int posicionColumna) {
         this.posicionColumna = posicionColumna;
     }
+
+
 }
