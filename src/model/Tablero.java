@@ -66,8 +66,8 @@ public class Tablero {
             inicio = nuevaPosicion;
             final1 = nuevaPosicion;
         }else{
-            final1.setCasillaSiguiente(nuevaPosicion);
             nuevaPosicion.setCasillaPrevia(final1);
+            final1.setCasillaSiguiente(nuevaPosicion);
             final1 = final1.getCasillaSiguiente();
 
         }
@@ -101,46 +101,54 @@ public class Tablero {
         if(posibleSolucion==true){
             return "La solución es correcta";
         }else{
+            System.out.println(showAll());
             return "La tubería no funciona";
         }
     }
 
     private boolean simularTuberia(boolean posibleSolucion,Posicion pointer ) {
-            if(pointer == null){
+        if (pointer == null) {
 
-            } else if (pointer.getTipoTuberia().equals("o") && pointer.getCasillaSiguiente().getTipoTuberia().equals("o")) {
-                posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("||")) {
-                posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("x")){
-                posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("||") && pointer.getCasillaSiguiente().getTipoTuberia().equals("=")) {
-                posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("o") && casillaInferior(pointer).equals("=")) {
-                posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("=")) {
-                posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("x")){
-                 posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("F") && pointer.getCasillaSiguiente().equals("o")) {
-                 posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("F") && pointer.getCasillaPrevia().equals("o")) {
-                 posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("F") && casillaInferior(pointer).equals("o")) {
-                 posibleSolucion = false;
-            } else if(pointer.getTipoTuberia().equals("F") && casillaSuperior(pointer).equals("o")){
-                 posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("D") && pointer.getCasillaPrevia().equals("o")) {
-                 posibleSolucion = false;
-            } else if (pointer.getTipoTuberia().equals("D") && casillaInferior(pointer).equals("o")) {
-                 posibleSolucion = false;
-            } else if(pointer.getTipoTuberia().equals("D") && casillaSuperior(pointer).equals("o")) {
-                posibleSolucion = false;
-            } else if(pointer.getTipoTuberia().equals("D") && pointer.getCasillaSiguiente().equals("o")) {
-                posibleSolucion = false;
-            } else{
+        } else if (pointer.getTipoTuberia().equals("o") && pointer.getCasillaSiguiente().getTipoTuberia().equals("o")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("||")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaSiguiente().getTipoTuberia().equals("x")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("||") && pointer.getCasillaSiguiente().getTipoTuberia().equals("=")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("o") && casillaInferior(pointer).equals("=")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("=")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("||") && casillaInferior(pointer).equals("x")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("F") && pointer.getCasillaSiguiente().equals("o")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("F") && pointer.getCasillaPrevia().equals("o")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("F") && casillaInferior(pointer).equals("o")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("F") && casillaSuperior(pointer).equals("o")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("D") && pointer.getCasillaPrevia().equals("o")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("D") && casillaInferior(pointer).equals("o")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("D") && casillaSuperior(pointer).equals("o")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("D") && pointer.getCasillaSiguiente().equals("o")) {
+            posibleSolucion = false;
+        } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaPrevia().getTipoTuberia().equals("x")) {
+            posibleSolucion = false;
+        }else if(pointer.getTipoTuberia().equals("o") && pointer.getCasillaPrevia().getTipoTuberia().equals("=") || pointer.getTipoTuberia().equals("o") && pointer.getCasillaPrevia().getTipoTuberia().equals("||")){
+            posibleSolucion = false;
+        }
+        else{
                 posibleSolucion = simularTuberia(posibleSolucion,pointer.getCasillaSiguiente());
-            }
+        }
+
+
 
         return posibleSolucion;
     }
