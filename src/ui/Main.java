@@ -14,6 +14,7 @@ public class Main {
     public static void main(String [] args){
         int option = 0;
         do{
+            System.out.println("Bienvenido a PipeMania");
             option = menu();
             switch (option){
                 case 1:

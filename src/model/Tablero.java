@@ -107,7 +107,8 @@ public class Tablero {
     }
 
     private boolean simularTuberia(boolean posibleSolucion,Posicion pointer ) {
-        if (pointer == null) {
+        posibleSolucion = ultimo(pointer,posibleSolucion);
+        if (pointer == null || posibleSolucion == false) {
 
         } else if (pointer.getTipoTuberia().equals("o") && pointer.getCasillaSiguiente().getTipoTuberia().equals("o")) {
             posibleSolucion = false;
@@ -141,16 +142,31 @@ public class Tablero {
             posibleSolucion = false;
         } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaPrevia().getTipoTuberia().equals("x")) {
             posibleSolucion = false;
-        }else if(pointer.getTipoTuberia().equals("o") && pointer.getCasillaPrevia().getTipoTuberia().equals("=") || pointer.getTipoTuberia().equals("o") && pointer.getCasillaPrevia().getTipoTuberia().equals("||")){
+        } else if( pointer.getTipoTuberia().equals("o") && pointer.getCasillaPrevia().getTipoTuberia().equals("||")){
             posibleSolucion = false;
-        }
-        else{
+        } else{
                 posibleSolucion = simularTuberia(posibleSolucion,pointer.getCasillaSiguiente());
         }
 
 
 
         return posibleSolucion;
+    }
+
+    public  boolean ultimo(Posicion pointer,boolean solucion){
+        if(solucion != false && pointer != null){
+            if(pointer.getPosicionColumna() == 7 && pointer.getPosicionFila() == 7){
+                if (pointer == null ) {
+
+                } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaPrevia().getTipoTuberia().equals("||")) {
+                    solucion = false;
+                } else if (pointer.getTipoTuberia().equals("=") && casillaSuperior(pointer).equals("o")) {
+                    solucion = false;
+                } else if (pointer.getTipoTuberia().equals("=") && pointer.getCasillaPrevia().getTipoTuberia().equals("x")) {
+                    solucion = false;
+                }
+            }
+        }        return solucion;
     }
     public static boolean inicioValidacion(Posicion pointer){
         boolean hanJugado= true;
@@ -172,8 +188,13 @@ public class Tablero {
         int pointerFilainferior = pointer.getPosicionFila();
         pointerFilainferior++;
         int pointerColumnainferior = pointer.getPosicionColumna();
-        Posicion casillaInferior = buscarPosicion(inicio,pointerColumnainferior,pointerFilainferior);
-        return casillaInferior.getTipoTuberia();
+        if(pointerFilainferior > 7){
+            return "Casilla Superior Alcanzada";
+        }else{
+            Posicion casillaInferior = buscarPosicion(inicio,pointerColumnainferior,pointerFilainferior);
+            return casillaInferior.getTipoTuberia();
+        }
+
     }
     public String casillaSuperior(Posicion pointer){
         int pointerFilaSuperior = pointer.getPosicionFila();
